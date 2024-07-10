@@ -22,9 +22,9 @@ const getProductsById =(req,res) => {
 }
 
 const createProduct = (req,res) => {
-    const {name, data, imageUrl, stock} =req.body;
-    const sql= 'INSERT INTO products (name, data, imageUrl, stock) VALUES (?, ?, ?, ?)';
-    db.query(sql, [name, data, imageUrl, stock], (err, results) =>{
+    const {name, data,id_tipo_producto, stock} =req.body;
+    const sql= 'INSERT INTO products (name, data, id_tipo_producto, stock) VALUES (?, ?, ?, ?)';
+    db.query(sql, [name, data, id_tipo_producto, stock], (err, results) =>{
         if (err){
             console.error('Error al crear producto:', err);
             res.status(500).json({error:'Error al crear producto'});
@@ -38,9 +38,9 @@ const createProduct = (req,res) => {
 
 const updateProduct = (req,res) =>{
     const {id_product}= req.params;
-    const {name, data, imageUrl, stock} =req.body;
-    const sql ='UPDATE products SET name = ?, data = ?, imageUrl= ?, stock= ? WHERE id_product = ?';
-    db.query( sql, [name, data, imageUrl, stock, id_product], (err, result)=>{
+    const {name, data, id_tipo_producto, stock} =req.body;
+    const sql ='UPDATE products SET name = ?, data = ?, id_tipo_producto = ?, stock= ? WHERE id_product = ?';
+    db.query( sql, [name, data, id_tipo_producto, stock, id_product], (err, result)=>{
         if(err){
             console.error('Error al modificar producto:', err);
             res.status(500).json({error:'Error al modificar producto'});

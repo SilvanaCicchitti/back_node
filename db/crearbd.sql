@@ -1,2 +1,2 @@
-CREATE DATABASE db_patagonia;
+CREATE DATABASE distribuidora;
 
